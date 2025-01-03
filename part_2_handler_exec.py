@@ -55,9 +55,11 @@ async def callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
  # fill user info
 async def fill_join(new_entry):
 
-    df_respond = pd.read_csv('~/Desktop/tg_repo/responde_data.txt', sep='\t')
+    # df_respond = pd.read_csv('~/Desktop/tg_repo/responde_data.txt', sep='\t')
+    df_respond = pd.read_csv(os.path.join(os.path.dirname(__file__), 'tg_repo (copy)', 'responde_data.txt'), sep='\t')
     df_respond = df_respond._append(new_entry, ignore_index=True)
-    df_respond.to_csv(os.path.expanduser('~/Desktop/tg_repo/responde_data.txt'), sep='\t', index=False)
+    # df_respond.to_csv(os.path.expanduser('~/Desktop/tg_repo/responde_data.txt'), sep='\t', index=False)
+    df_respond.to_csv(os.path.join(os.path.dirname(__file__), 'tg_repo (copy)', 'responde_data.txt'), sep='\t', index=False)
 
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
@@ -123,8 +125,8 @@ async def three(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
 
 def main() -> None:
 # upload main params
-    df = pd.read_csv('~/Desktop/key_b.txt', header=None)
-    bot_token = df.iloc[0, 0]
+    df = pd.read_csv('~/Desktop/key_b.txt', header=None) # HIDE WHEN 127 FILLED PROPER
+    bot_token = df.iloc[0, 0] # move df.iloc[0, 0] and ADD HERE 'YOUR_BOT_TOKEN' instead
 
 # app create set main params
     application = ApplicationBuilder().token(bot_token).build()

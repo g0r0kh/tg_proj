@@ -1,0 +1,4 @@
+id	id_adress	link_path	chat_id	id_link	link	dt_create	dt_expire
+1	addr1@post.com	~/Desktop/tg_repo/links	-1,00E+12	
+2	addr2@post.com	~/Desktop/tg_repo/links	-1,00E+12	
+3	addr3@post.com	~/Desktop/tg_repo/links	-1,00E+12	

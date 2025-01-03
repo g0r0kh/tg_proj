@@ -1,0 +1,4 @@
+dt_time	text	file_path
+2025.01.03 17:28	Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium	~/Desktop/tg_repo/0001.jpg
+2025.01.03 17:28	Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt,	~/Desktop/tg_repo/0002.jpg
+2025.01.03 17:28	Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo. Nemo enim ipsam voluptatem, quia voluptas sit, aspernatur aut odit aut fugit	~/Desktop/tg_repo/0003.jpg

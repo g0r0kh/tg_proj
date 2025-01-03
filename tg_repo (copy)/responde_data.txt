@@ -1,0 +1,2 @@
+id_link	id_tg	tg_f_name	tg_l_name	dt_tg_responde	tg_responde_status
+	

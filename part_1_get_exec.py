@@ -22,7 +22,8 @@ class TBot:
 
     async def posting_group(self):
         # Add file with posts send dates and pictures path
-        df_schedule = pd.read_csv(os.path.expanduser('~/Desktop/tg_repo/text_schedule.txt'), sep='\t')  # read txt file
+        #df_schedule = pd.read_csv(os.path.expanduser('~/Desktop/tg_repo/text_schedule.txt'), sep='\t')  # read txt file
+        df_schedule = pd.read_csv(os.path.join(os.path.dirname(__file__), 'tg_repo (copy)', 'text_schedule.txt'), sep='\t')
         df_schedule['dt_time'] = pd.to_datetime(df_schedule['dt_time'])  # transform to datetype
         curr_date_posts = df_schedule[(df_schedule['dt_time'] > pd.Timestamp.now()) &
                                       (df_schedule['dt_time'].dt.date == pd.Timestamp.now().normalize().date())]
@@ -43,7 +44,8 @@ class TBot:
 
     async def generate_invite_link(self):
         #link_name
-        df_main = pd.read_csv('~/Desktop/tg_repo/invite_data.txt', sep='\t')
+        # df_schedule = pd.read_csv(os.path.join(os.path.dirname(__file__), 'tg_repo', 'text_schedule.txt'), sep='\t')
+        df_main = pd.read_csv(os.path.join(os.path.dirname(__file__), 'tg_repo (copy)', 'invite_data.txt'), sep='\t')
 
         # fill gaps in links file.txt
         for index, row in df_main.iterrows():
@@ -74,7 +76,8 @@ class TBot:
                 df_main.at[index, 'dt_expire'] = invite["result"]["expire_date"]
 
         # keep result in links.txt
-                df_main.to_csv('~/Desktop/tg_repo/invite_data.txt', sep='\t', index=False)
+        #         df_main = pd.read_csv(os.path.join(os.path.dirname(__file__), 'tg_repo', 'invite_data.txt'), sep='\t')
+                df_main.to_csv(os.path.join(os.path.dirname(__file__), 'tg_repo (copy)', 'invite_data.txt'), sep='\t', index=False)
         # QR linked
                 qr = qrcode.QRCode(error_correction=qrcode.constants.ERROR_CORRECT_H)
                 qr.add_data(invite["result"]["invite_link"])
@@ -83,17 +86,21 @@ class TBot:
                 img = qr.make_image(image_factory=StyledPilImage, module_drawer=CircleModuleDrawer())
 
         # keep QR
-                qr_path = os.path.join(os.path.expanduser("~"), "Desktop/tg_repo/links")
+        #         qr_path = os.path.join(os.path.expanduser("~"), "Desktop/tg_repo/links")
+        #         file_path = os.path.join(qr_path, f"{link_name}.png")
+                current_dir = os.path.dirname(__file__)
+                qr_path = os.path.join(current_dir, 'tg_repo (copy)', 'links')
                 file_path = os.path.join(qr_path, f"{link_name}.png")
+
         # save QR
                 img.save(file_path)
 
 
 async def main():
     # set up TOKEN & CHAT ID
-    df = pd.read_csv('~/Desktop/key_b.txt', header=None)
-    bot_token = df.iloc[0, 0]
-    chat_id = df.iloc[1, 0]
+    df = pd.read_csv('~/Desktop/key_b.txt', header=None) # HIDE WHEN 102 & 103 FILLED PROPPER
+    bot_token = df.iloc[0, 0] # move df.iloc[0, 0] and ADD HERE 'YOUR_BOT_TOKEN' instead
+    chat_id = df.iloc[1, 0]   # move df.iloc[1, 0] and ADD HERE 'YOUR_CHAT_ID' or '..GROUP..' instead
 
     # BOT exec
     bot = TBot(bot_token, chat_id)

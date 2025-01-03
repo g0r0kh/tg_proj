@@ -120,7 +120,7 @@ async def two(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
 async def three(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     query = update.callback_query
     await query.answer()
-    await query.edit_message_text(text="So it was a flee meet🤷. Hope u not upsat and we'll see u soon👋!")
+    await query.edit_message_text(text="So it was a flee meet🤷. Hope u not upset and we'll see u soon👋!")
     return ConversationHandler.END
 
 def main() -> None:

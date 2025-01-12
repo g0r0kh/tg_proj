@@ -113,7 +113,7 @@ async def one(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
 async def two(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     """Show new choice of buttons"""
     chat_id = update.effective_chat.id  # chat id extraction
-    document_path = os.path.expanduser('~/Desktop/key_bb.txt')  # file path
+    document_path = os.path.join(os.path.dirname(__file__), 'tg_repo (copy)', 'key_bb.txt')  # file path
     await context.bot.send_document(chat_id=chat_id, caption='as we`ve told before here is your report📊',document=open(document_path, 'rb'))
     return END_ROUTES
 
